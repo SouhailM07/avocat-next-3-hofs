@@ -12,7 +12,7 @@ export const Footer = () => {
             </p>
           </div>
           <div className="hidden md:flex justify-end gap-x-8">
-            {['الرئيسية', 'عن المكتب', 'الخدمات', 'اتصل بنا'].map((item) => (
+            {['الرئيسية', 'عن المكتب', 'الخدمات', 'اتصل'].map((item) => (
               <Link key={item} href={`#${item}`} className="text-gray-300 hover:text-secondary transition-colors">
                 {item}
               </Link>
@@ -22,8 +22,8 @@ export const Footer = () => {
         
         <div className="mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <p>© 2026 جميع الحقوق محفوظة لـ Avocat Ayoub Ouldrouis</p>
-          <div className="mt-4 md:mt-0">
-            <p>Made with perfection</p>
+          <div className="mt-4 md:mt-0 text-center md:text-end">
+            <p>تصميم احترافي يعكس الثقة والمصداقية</p>
           </div>
         </div>
       </div>

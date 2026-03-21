@@ -3,9 +3,9 @@ import { CheckCircle2 } from 'lucide-react';
 export const About = () => {
   const features = [
     "خبرة قانونية",
-    "التزام كامل",
-    "دفاع قوي",
-    "استجابة سريعة"
+    "سرية تامة",
+    "استجابة سريعة",
+    "متابعة دقيقة"
   ];
 
   return (
@@ -28,7 +28,7 @@ export const About = () => {
               <span className="absolute bottom-0 start-0 w-1/2 h-1 bg-secondary rounded-full -mb-2"></span>
             </h2>
             <p className="text-lg text-text/80 leading-relaxed mb-8">
-              يقدم الأستاذ أيوب أولدرويس خدمات قانونية متكاملة في مختلف المجالات، مع التركيز على تقديم دفاع قوي وفعال أمام جميع الجهات القضائية. يتميز المكتب بالاحترافية، السرية، وسرعة الاستجابة.
+              يقدم المكتب خدمات قانونية شاملة مع خبرة في الدفاع عن القضايا الجنائية والمدنية، مع الالتزام بالسرية والمهنية.
             </p>
             
             <div className="grid grid-cols-2 gap-6">

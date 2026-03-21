@@ -13,9 +13,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Avocat Ayoub Ouldrouis | محامي في المدية",
-  description: "محامي في المدية يقدم خدمات قانونية احترافية في القضايا الجنائية والمدنية. اتصل الآن للحصول على استشارة.",
-  keywords: ["محامي المدية", "Avocat Medea", "محامي الجزائر", "قانون جنائي", "استشارة قانونية"],
+  title: "محامي في المدية | Avocat Ayoub Ouldrouis",
+  description: "محامي في المدية متخصص في القضايا الجنائية والمدنية. استشارة قانونية احترافية واتصال مباشر.",
+  keywords: ["محامي المدية", "Avocat Medea", "قانون جنائي", "استشارة قانونية"],
 };
 
 export default function RootLayout({

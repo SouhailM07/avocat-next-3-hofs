@@ -19,7 +19,7 @@ export const Hero = () => {
               Avocat Ayoub <br/> Ouldrouis
             </h1>
             <p className="text-lg text-text/80 mb-8 max-w-lg leading-relaxed">
-              دفاع قانوني احترافي وخبرة في القضايا الجنائية والمدنية مع التزام كامل بخدمة موكليك أمام جميع الجهات القضائية.
+              دفاع قانوني احترافي في القضايا الجنائية والمدنية مع التزام كامل بحماية حقوقك.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -28,18 +28,19 @@ export const Hero = () => {
               </Button>
               <Button size="lg" variant="outline" className="gap-2" onClick={() => window.location.href='tel:0553265760'}>
                 <PhoneCall size={20} />
-                <span dir="ltr">0553 26 57 60</span>
+                <span dir="ltr">اتصال مباشر</span>
               </Button>
             </div>
           </div>
 
           <div className="relative w-full aspect-[4/5] lg:aspect-square flex justify-center lg:justify-end">
-            <div className="absolute inset-0 bg-primary/5 rounded-3xl rotate-3 scale-105 -z-10 transition-transform duration-500 hover:rotate-6" />
-            <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-primary">
+            <div className="absolute inset-0 bg-primary/10 rounded-3xl rotate-3 scale-105 -z-10 transition-transform duration-500 hover:rotate-6" />
+            <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-primary relative">
+              <div className="absolute inset-0 bg-black/30 z-10" />
               <img 
                 src="https://images.unsplash.com/photo-1505664194779-8dcee3aa8f52?auto=format&fit=crop&q=80&w=1200" 
                 alt="Law Architecture" 
-                className="object-cover w-full h-full opacity-90 transition-transform duration-700 hover:scale-105"
+                className="object-cover w-full h-full transition-transform duration-700 hover:scale-105 relative z-0"
               />
             </div>
           </div>

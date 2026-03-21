@@ -4,22 +4,22 @@ export const Services = () => {
   const items = [
     {
       title: "القانون الجنائي",
-      description: "الدفاع في القضايا الجنائية بمختلف درجاتها",
+      description: "الدفاع في القضايا الجنائية بجميع مراحلها",
       icon: <Gavel className="w-8 h-8" />
     },
     {
       title: "القضايا المدنية",
-      description: "حل النزاعات المدنية وتمثيل العملاء أمام القضاء",
+      description: "حل النزاعات وتمثيل العملاء أمام القضاء",
       icon: <Scale className="w-8 h-8" />
     },
     {
       title: "الاستشارات القانونية",
-      description: "تقديم استشارات دقيقة وموثوقة",
+      description: "تقديم استشارات قانونية دقيقة",
       icon: <FileText className="w-8 h-8" />
     },
     {
-      title: "الطوارئ القانونية",
-      description: "متابعة القضايا العاجلة على مدار الساعة",
+      title: "القضايا المستعجلة",
+      description: "التعامل مع الحالات الطارئة بسرعة",
       icon: <Briefcase className="w-8 h-8" />
     }
   ];
