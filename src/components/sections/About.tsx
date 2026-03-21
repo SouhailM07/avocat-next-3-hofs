@@ -16,8 +16,8 @@ export const About = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-secondary/10 rounded-3xl -z-10 translate-y-4 -translate-x-4" />
             <img 
-              src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80&w=1200" 
-              alt="Scales of Justice" 
+              src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=1200" 
+              alt="Law Building Pillars" 
               className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
             />
           </div>

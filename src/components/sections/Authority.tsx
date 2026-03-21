@@ -31,7 +31,7 @@ export const Authority = () => {
             <div className="absolute inset-0 bg-secondary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
             <div className="rounded-3xl overflow-hidden shadow-2xl relative bg-background/5">
               <img 
-                src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&q=80&w=1200" 
                 alt="Legal Authority" 
                 className="w-full h-[500px] object-cover opacity-80"
               />
