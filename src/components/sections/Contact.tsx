@@ -4,47 +4,62 @@ import { MapPin, Phone, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-re
 import { Button } from '../ui/Button';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { sendEmail } from '@/app/actions/sendEmail';
+
+const contactSchema = z.object({
+  name: z.string().min(2, { message: 'name_min' }),
+  email: z.string().email({ message: 'email_invalid' }),
+  subject: z.string().min(5, { message: 'subject_min' }),
+  message: z.string().min(10, { message: 'message_min' }),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export const Contact = () => {
   const t = useTranslations('contact');
   const locale = useLocale();
   const isRtl = locale === 'ar';
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
     setStatus('loading');
     setErrorMessage('');
 
     try {
-      const result = await sendEmail(formData);
+      const result = await sendEmail(data);
       if (result.success) {
         setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        reset();
         // Reset success message after 5 seconds
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
-        setErrorMessage(result.error || 'Something went wrong');
+        setErrorMessage(result.error || t('errors.general'));
       }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('An unexpected error occurred');
+      setErrorMessage(t('errors.unexpected'));
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -52,10 +67,7 @@ export const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
-          {/* Contact Info - Appears on the right in RTL, left in LTR visually if we don't swap, 
-              but the screenshot shows title/info on the right. 
-              In RTL layout, lg:grid-cols-2 will put the first child on the right if dir="rtl" is set on html.
-          */}
+          {/* Contact Info */}
           <div className={`space-y-8 ${isRtl ? 'lg:order-1' : ''}`}>
             <div>
               <span className="text-secondary font-semibold tracking-wide uppercase text-sm mb-2 block">
@@ -121,66 +133,82 @@ export const Contact = () => {
                 </Button>
               </div>
             ) : (
-              <form className="space-y-10" onSubmit={handleSubmit}>
+              <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-10">
                   <div className="relative group">
-                    <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                    <label 
+                      htmlFor="name"
+                      className={`text-sm font-bold mb-2 block transition-colors group-focus-within:text-secondary ${errors.name ? 'text-red-500' : 'text-gray-400'}`}
+                    >
                       {t('form.name')}
                     </label>
                     <input 
+                      id="name"
                       type="text" 
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                      {...register('name')}
+                      className={`w-full bg-transparent border-b-2 py-3 outline-none transition-all focus:border-secondary text-primary font-medium ${errors.name ? 'border-red-500' : 'border-gray-100'}`}
                       placeholder=""
                     />
+                    {errors.name && (
+                      <span className="text-xs text-red-500 mt-1 block">{t(`form.errors.${errors.name.message}`)}</span>
+                    )}
                   </div>
                   <div className="relative group">
-                    <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                    <label 
+                      htmlFor="email"
+                      className={`text-sm font-bold mb-2 block transition-colors group-focus-within:text-secondary ${errors.email ? 'text-red-500' : 'text-gray-400'}`}
+                    >
                       {t('form.email')}
                     </label>
                     <input 
+                      id="email"
                       type="email" 
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                      {...register('email')}
+                      className={`w-full bg-transparent border-b-2 py-3 outline-none transition-all focus:border-secondary text-primary font-medium ${errors.email ? 'border-red-500' : 'border-gray-100'}`}
                       placeholder=""
                     />
+                    {errors.email && (
+                      <span className="text-xs text-red-500 mt-1 block">{t(`form.errors.${errors.email.message}`)}</span>
+                    )}
                   </div>
                 </div>
 
                 <div className="relative group">
-                  <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                  <label 
+                    htmlFor="subject"
+                    className={`text-sm font-bold mb-2 block transition-colors group-focus-within:text-secondary ${errors.subject ? 'text-red-500' : 'text-gray-400'}`}
+                  >
                     {t('form.subject')}
                   </label>
                   <input 
+                    id="subject"
                     type="text" 
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                    {...register('subject')}
+                    className={`w-full bg-transparent border-b-2 py-3 outline-none transition-all focus:border-secondary text-primary font-medium ${errors.subject ? 'border-red-500' : 'border-gray-100'}`}
                     placeholder=""
                   />
+                  {errors.subject && (
+                    <span className="text-xs text-red-500 mt-1 block">{t(`form.errors.${errors.subject.message}`)}</span>
+                  )}
                 </div>
 
                 <div className="relative group">
-                  <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                  <label 
+                    htmlFor="message"
+                    className={`text-sm font-bold mb-2 block transition-colors group-focus-within:text-secondary ${errors.message ? 'text-red-500' : 'text-gray-400'}`}
+                  >
                     {t('form.message')}
                   </label>
                   <textarea 
-                    name="message"
-                    required
+                    id="message"
+                    {...register('message')}
                     rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium resize-none"
+                    className={`w-full bg-transparent border-b-2 py-3 outline-none transition-all focus:border-secondary text-primary font-medium resize-none ${errors.message ? 'border-red-500' : 'border-gray-100'}`}
                     placeholder=""
                   ></textarea>
+                  {errors.message && (
+                    <span className="text-xs text-red-500 mt-1 block">{t(`form.errors.${errors.message.message}`)}</span>
+                  )}
                 </div>
 
                 {status === 'error' && (
