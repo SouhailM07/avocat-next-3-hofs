@@ -27,13 +27,13 @@ export const Authority = () => {
               ))}
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute inset-0 bg-secondary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
+          <div className="relative mt-12 lg:mt-0">
+            <div className="absolute inset-0 bg-secondary/20 rounded-3xl transform lg:translate-x-4 lg:translate-y-4 -z-10"></div>
             <div className="rounded-3xl overflow-hidden shadow-2xl relative bg-background/5">
               <img 
-                src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&q=80&w=1200" 
-                alt="Legal Authority" 
-                className="w-full h-[500px] object-cover opacity-80"
+                src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?auto=format&fit=crop&q=80&w=1200" 
+                alt="Legal Authority Pen" 
+                className="w-full h-[400px] lg:h-[500px] object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
