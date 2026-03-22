@@ -1,74 +1,132 @@
 "use client";
 
-import { MapPin, Phone, Clock } from 'lucide-react';
+import { MapPin, Phone, Clock, Send } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export const Contact = () => {
   const t = useTranslations('contact');
+  const locale = useLocale();
+  const isRtl = locale === 'ar';
+
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-24 bg-[#F8F9FB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h2>
-          <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           
-          <div className="space-y-8 p-8 bg-background rounded-3xl border border-gray-100">
-            <h3 className="text-2xl font-bold font-heading text-primary mb-6">{t('office_name')}</h3>
-            
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-xl shadow-sm text-secondary shrink-0">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h4 className="font-bold text-primary mb-1">{t('address_label')}</h4>
-                <p className="text-gray-600">{t('address_value')}</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-xl shadow-sm text-secondary shrink-0">
-                <Clock size={24} />
-              </div>
-              <div>
-                <h4 className="font-bold text-primary mb-1">{t('hours_label')}</h4>
-                <p className="text-gray-600">{t('hours_value')}</p>
-              </div>
+          {/* Contact Info - Appears on the right in RTL, left in LTR visually if we don't swap, 
+              but the screenshot shows title/info on the right. 
+              In RTL layout, lg:grid-cols-2 will put the first child on the right if dir="rtl" is set on html.
+          */}
+          <div className={`space-y-8 ${isRtl ? 'lg:order-1' : ''}`}>
+            <div>
+              <span className="text-secondary font-semibold tracking-wide uppercase text-sm mb-2 block">
+                {t('subtitle')}
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-heading font-bold text-primary mb-6">
+                {t('title')}
+              </h2>
+              <div className="w-20 h-1 bg-secondary/30 rounded-full mb-8"></div>
+              <p className="text-gray-600 leading-relaxed max-w-md">
+                {t('description')}
+              </p>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-xl shadow-sm text-secondary shrink-0">
-                <Phone size={24} />
+            <div className="space-y-8 pt-4">
+              <div className="flex items-center gap-5 group">
+                <div className="p-4 bg-primary rounded-lg text-white transition-transform group-hover:scale-110">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary text-xl mb-1">{t('address_label')}</h4>
+                  <p className="text-gray-500 font-medium">{t('address_value')}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-primary mb-1">{t('phone_label')}</h4>
-                <p className="text-gray-600" dir="ltr">0553 26 57 60</p>
-              </div>
-            </div>
 
-            <div className="pt-8 mt-8 border-t border-gray-200">
-              <Button size="lg" className="w-full text-lg gap-2" onClick={() => window.location.href='tel:0553265760'}>
-                <Phone size={20} />
-                {t('cta')}
-              </Button>
+              <div className="flex items-center gap-5 group">
+                <div className="p-4 bg-primary rounded-lg text-white transition-transform group-hover:scale-110">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary text-xl mb-1">{t('phone_label')}</h4>
+                  <p className="text-gray-500 font-medium" dir="ltr">{t('phone_value')}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-5 group">
+                <div className="p-4 bg-primary rounded-lg text-white transition-transform group-hover:scale-110">
+                  <Clock size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary text-xl mb-1">{t('hours_label')}</h4>
+                  <p className="text-gray-500 font-medium">{t('hours_value')}</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="h-[500px] w-full rounded-3xl overflow-hidden shadow-lg border border-gray-100 relative bg-gray-50 flex items-center justify-center">
-            {/* Real Map iframe if available, or a stylized placeholder */}
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12836.26257321683!2d2.756247345638515!3d36.26470359873041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fbdae4b02d645%3A0x7d6b38c353ec02ba!2sM%C3%A9d%C3%A9a!5e0!3m2!1sen!2sdz!4v1716382903120!5m2!1sen!2sdz" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen={false}
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0"
-            ></iframe>
+          {/* Contact Form - Card on the other side */}
+          <div className={`bg-white p-8 lg:p-12 rounded-[2rem] shadow-xl shadow-gray-200/50 border border-gray-100 ${isRtl ? 'lg:order-2' : ''}`}>
+            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-10">
+                <div className="relative group">
+                  <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                    {t('form.name')}
+                  </label>
+                  <input 
+                    type="text" 
+                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                    placeholder=""
+                  />
+                </div>
+                <div className="relative group">
+                  <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                    {t('form.email')}
+                  </label>
+                  <input 
+                    type="email" 
+                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+
+              <div className="relative group">
+                <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                  {t('form.subject')}
+                </label>
+                <input 
+                  type="text" 
+                  className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                  placeholder=""
+                />
+              </div>
+
+              <div className="relative group">
+                <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                  {t('form.message')}
+                </label>
+                <textarea 
+                  rows={4}
+                  className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium resize-none"
+                  placeholder=""
+                ></textarea>
+              </div>
+
+              <Button type="submit" className="w-full py-5 rounded-none bg-[#0B1C2C] text-white hover:bg-[#1a2e42] transition-all flex items-center justify-center gap-3 text-lg font-bold group">
+                {isRtl ? (
+                  <>
+                    <span className="mt-1">{t('form.submit')}</span>
+                    <Send className="w-5 h-5 transition-transform group-hover:-translate-x-1 -rotate-90" />
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    <span className="mt-1">{t('form.submit')}</span>
+                  </>
+                )}
+              </Button>
+            </form>
           </div>
 
         </div>

@@ -73,13 +73,23 @@
     "cta": "Appel Immédiat"
   },
   "contact": {
-    "title": "Coordonnées",
+    "subtitle": "Contactez-nous",
+    "title": "Restons en contact",
+    "description": "Nous sommes là pour répondre à toutes vos questions juridiques. N'hésitez pas à nous contacter pour prendre rendez-vous ou pour obtenir une consultation.",
     "office_name": "Cabinet Maître Ayoub Ouldrouis",
-    "address_label": "Adresse",
+    "address_label": "Localisation",
     "address_value": "7Q87+VJ7, Rue Kassab Ahmed, Médéa",
     "hours_label": "Horaires",
-    "hours_value": "Ouvert - Ferme à 22h00",
+    "hours_value": "Dimanche - Jeudi : 09h00 - 17h00",
     "phone_label": "Téléphone",
+    "phone_value": "+213 (0) 553 26 57 60",
+    "form": {
+      "name": "Nom complet",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer la demande"
+    },
     "cta": "Appeler"
   },
   "footer": {
