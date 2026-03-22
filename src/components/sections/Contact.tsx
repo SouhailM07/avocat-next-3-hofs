@@ -2,28 +2,30 @@
 
 import { MapPin, Phone, Clock } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { useTranslations } from 'next-intl';
 
 export const Contact = () => {
+  const t = useTranslations('contact');
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">معلومات التواصل</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
           <div className="space-y-8 p-8 bg-background rounded-3xl border border-gray-100">
-            <h3 className="text-2xl font-bold font-heading text-primary mb-6">مكتب الأستاذ أيوب أولدرويس</h3>
+            <h3 className="text-2xl font-bold font-heading text-primary mb-6">{t('office_name')}</h3>
             
             <div className="flex items-start gap-4">
               <div className="p-3 bg-white rounded-xl shadow-sm text-secondary shrink-0">
                 <MapPin size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-primary mb-1">العنوان</h4>
-                <p className="text-gray-600">7Q87+VJ7، Rue Kassab Ahmed، المدية</p>
+                <h4 className="font-bold text-primary mb-1">{t('address_label')}</h4>
+                <p className="text-gray-600">{t('address_value')}</p>
               </div>
             </div>
             
@@ -32,8 +34,8 @@ export const Contact = () => {
                 <Clock size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-primary mb-1">أوقات العمل</h4>
-                <p className="text-gray-600">مفتوح - يغلق عند 10:00 مساءً</p>
+                <h4 className="font-bold text-primary mb-1">{t('hours_label')}</h4>
+                <p className="text-gray-600">{t('hours_value')}</p>
               </div>
             </div>
 
@@ -42,7 +44,7 @@ export const Contact = () => {
                 <Phone size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-primary mb-1">رقم الهاتف</h4>
+                <h4 className="font-bold text-primary mb-1">{t('phone_label')}</h4>
                 <p className="text-gray-600" dir="ltr">0553 26 57 60</p>
               </div>
             </div>
@@ -50,7 +52,7 @@ export const Contact = () => {
             <div className="pt-8 mt-8 border-t border-gray-200">
               <Button size="lg" className="w-full text-lg gap-2" onClick={() => window.location.href='tel:0553265760'}>
                 <Phone size={20} />
-                اتصل الآن
+                {t('cta')}
               </Button>
             </div>
           </div>

@@ -2,14 +2,11 @@
 
 import { Button } from '../ui/Button';
 import { AlertTriangle, PhoneCall } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const Emergency = () => {
-  const items = [
-    "الحراسة النظرية",
-    "المثول أمام المحكمة",
-    "التحقيق القضائي",
-    "الاحتجاز"
-  ];
+  const t = useTranslations('emergency');
+  const items = t.raw('items') as string[];
 
   return (
     <section className="py-24 relative overflow-hidden bg-background">
@@ -21,10 +18,10 @@ export const Emergency = () => {
           <div className="flex-1 text-center lg:text-start">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold mb-6">
               <AlertTriangle size={20} />
-              <span>متاح 7 أيام في الأسبوع / 24 ساعة</span>
+              <span>{t('badge')}</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">
-              الاستعجالات القانونية
+              {t('title')}
             </h2>
             
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
@@ -38,10 +35,10 @@ export const Emergency = () => {
           
           <div className="w-full lg:w-auto text-center shrink-0">
             <div className="bg-primary/5 p-8 rounded-3xl">
-              <p className="text-gray-500 font-medium mb-3">بحاجة إلى مساعدة عاجلة؟</p>
+              <p className="text-gray-500 font-medium mb-3">{t('help_text')}</p>
               <Button size="lg" className="w-full lg:w-auto text-lg gap-3 py-6 shadow-xl shadow-secondary/20 bg-secondary hover:bg-amber-600 font-bold" onClick={() => window.location.href='tel:0553265760'}>
                 <PhoneCall size={24} />
-                اتصال فوري
+                {t('cta')}
               </Button>
             </div>
           </div>

@@ -1,21 +1,32 @@
 "use client";
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { Button } from '../ui/Button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, useRouter, usePathname } from '@/i18n/routing';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('nav');
+  const tHero = useTranslations('hero');
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const links = [
-    { name: 'الرئيسية', href: '#home' },
-    { name: 'عن المكتب', href: '#about' },
-    { name: 'الخدمات', href: '#services' },
-    { name: 'اتصل بنا', href: '#contact' },
+    { name: t('home'), href: '#home' },
+    { name: t('about'), href: '#about' },
+    { name: t('services'), href: '#services' },
+    { name: t('contact'), href: '#contact' },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const toggleLanguage = () => {
+    const nextLocale = locale === 'ar' ? 'fr' : 'ar';
+    router.replace(pathname, { locale: nextLocale });
+  };
 
   return (
     <nav className="fixed w-full z-50 top-0 start-0 bg-background/80 backdrop-blur-md border-b border-gray-200">
@@ -23,12 +34,12 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="font-heading text-2xl font-bold text-primary">
-              Avocat Ayoub
+              {tHero('title1')}
             </Link>
           </div>
           
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-8 space-x-reverse">
+          <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <Link
                 key={link.name}
@@ -42,8 +53,16 @@ export const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/5 text-primary hover:bg-primary/10 transition-colors font-bold uppercase tracking-wider"
+              aria-label="Toggle language"
+            >
+              <Globe size={18} />
+              <span>{locale === 'ar' ? 'FR' : 'عربي'}</span>
+            </button>
             <Link href="#contact">
-              <Button variant="primary">احجز استشارة</Button>
+              <Button variant="primary">{t('book')}</Button>
             </Link>
           </div>
 
@@ -74,9 +93,16 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4">
+            <div className="pt-4 space-y-4">
+              <button
+                onClick={toggleLanguage}
+                className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-primary/5 text-primary font-bold uppercase"
+              >
+                <Globe size={20} />
+                <span>{locale === 'ar' ? 'Français' : 'العربية'}</span>
+              </button>
               <Link href="#contact" onClick={() => setIsOpen(false)}>
-                <Button variant="primary" className="w-full text-lg py-6">احجز استشارة</Button>
+                <Button variant="primary" className="w-full text-lg py-6">{t('book')}</Button>
               </Link>
             </div>
           </div>

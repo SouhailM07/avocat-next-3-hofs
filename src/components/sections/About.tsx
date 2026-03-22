@@ -1,11 +1,16 @@
+"use client";
+
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const About = () => {
+  const t = useTranslations("about");
+  
   const features = [
-    "خبرة قانونية",
-    "سرية تامة",
-    "استجابة سريعة",
-    "متابعة دقيقة",
+    t('features.expertise'),
+    t('features.confidentiality'),
+    t('features.speed'),
+    t('features.followup'),
   ];
 
   return (
@@ -23,12 +28,11 @@ export const About = () => {
 
           <div>
             <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6 relative inline-block">
-              عن المكتب
+              {t('title')}
               <span className="absolute bottom-0 start-0 w-1/2 h-1 bg-secondary rounded-full -mb-2"></span>
             </h2>
             <p className="text-lg text-text/80 leading-relaxed mb-8">
-              يقدم المكتب خدمات قانونية شاملة مع خبرة في الدفاع عن القضايا
-              الجنائية والمدنية، مع الالتزام بالسرية والمهنية.
+              {t('description')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "contact": "Contact",
+    "book": "Réserver"
+  },
+  "hero": {
+    "subtitle": "Avocat à Médéa",
+    "title1": "Avocat Ayoub",
+    "title2": "Ouldrouis",
+    "description": "Défense juridique professionnelle dans les affaires pénales et civiles avec un engagement total pour protéger vos droits.",
+    "cta_book": "Réserver une consultation",
+    "cta_call": "Appel direct"
+  },
+  "about": {
+    "title": "À Propos du Cabinet",
+    "description": "Le cabinet offre des services juridiques complets avec une expertise dans la défense des affaires pénales et civiles, avec un engagement de confidentialité et de professionnalisme.",
+    "features": {
+      "expertise": "Expertise Juridique",
+      "confidentiality": "Confidentialité Totale",
+      "speed": "Réponse Rapide",
+      "followup": "Suivi Précis"
+    }
+  },
+  "services": {
+    "title": "Domaines d'Intervention",
+    "criminal": {
+      "title": "Droit Pénal",
+      "desc": "Défense dans les affaires pénales à toutes les étapes."
+    },
+    "civil": {
+      "title": "Affaires Civiles",
+      "desc": "Résolution de litiges et représentation des clients devant les tribunaux."
+    },
+    "consultation": {
+      "title": "Conseil Juridique",
+      "desc": "Prestation de conseils juridiques précis."
+    },
+    "urgent": {
+      "title": "Affaires Urgentes",
+      "desc": "Traitement rapide des cas d'urgence."
+    }
+  },
+  "authority": {
+    "title": "Pourquoi nous choisir",
+    "description": "Nous pensons que chaque cas nécessite une stratégie unique et un suivi rigoureux. Forts de notre expérience, nous vous offrons une protection juridique complète en toute discrétion.",
+    "items": [
+      "Suivi personnalisé de chaque dossier",
+      "Engagement total pour la défense des droits",
+      "Expérience dans divers types d'affaires",
+      "Communication directe et rapide"
+    ],
+    "badge": "Confiance et Crédibilité"
+  },
+  "values": {
+    "title": "Nos Valeurs",
+    "professionalism": "Professionnalisme",
+    "humanity": "Humanité",
+    "speed": "Rapidité"
+  },
+  "emergency": {
+    "badge": "Disponible 7j/7 - 24h/24",
+    "title": "Urgences Juridiques",
+    "items": [
+      "Garde à vue",
+      "Comparution immédiate",
+      "Instruction judiciaire",
+      "Détention"
+    ],
+    "help_text": "Besoin d'une aide urgente ?",
+    "cta": "Appel Immédiat"
+  },
+  "contact": {
+    "title": "Coordonnées",
+    "office_name": "Cabinet Maître Ayoub Ouldrouis",
+    "address_label": "Adresse",
+    "address_value": "7Q87+VJ7, Rue Kassab Ahmed, Médéa",
+    "hours_label": "Horaires",
+    "hours_value": "Ouvert - Ferme à 22h00",
+    "phone_label": "Téléphone",
+    "cta": "Appeler"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "description": "Défense juridique professionnelle et expertise dans les affaires pénales et civiles avec un engagement total au service de vos clients.",
+    "tagline": "Un design professionnel qui reflète la confiance et la crédibilité",
+    "developed_by": "Développé par"
+  }
+}

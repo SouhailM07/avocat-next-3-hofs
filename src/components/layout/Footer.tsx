@@ -1,29 +1,43 @@
-import Link from 'next/link';
+"use client";
+
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export const Footer = () => {
+  const t = useTranslations('footer');
+  const tNav = useTranslations('nav');
+  const tHero = useTranslations('hero');
+
+  const navLinks = [
+    { name: tNav('home'), href: '#home' },
+    { name: tNav('about'), href: '#about' },
+    { name: tNav('services'), href: '#services' },
+    { name: tNav('contact'), href: '#contact' },
+  ];
+
   return (
     <footer className="bg-primary text-background py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center border-b border-gray-700 pb-12">
           <div>
-            <h2 className="text-3xl font-heading font-bold mb-4">Avocat Ayoub Ouldrouis</h2>
+            <h2 className="text-3xl font-heading font-bold mb-4">{tHero('title1')}</h2>
             <p className="text-gray-300 max-w-sm">
-              دفاع قانوني احترافي وخبرة في القضايا الجنائية والمدنية مع التزام كامل بخدمة موكليك.
+              {t('description')}
             </p>
           </div>
           <div className="hidden md:flex justify-end gap-x-8">
-            {['الرئيسية', 'عن المكتب', 'الخدمات', 'اتصل'].map((item) => (
-              <Link key={item} href={`#${item}`} className="text-gray-300 hover:text-secondary transition-colors">
-                {item}
+            {navLinks.map((link) => (
+              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-secondary transition-colors">
+                {link.name}
               </Link>
             ))}
           </div>
         </div>
         
         <div className="mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>© 2026 جميع الحقوق محفوظة لـ Avocat Ayoub Ouldrouis</p>
+          <p>© 2026 {t('rights')} {tHero('title1')}</p>
           <div className="mt-4 md:mt-0 text-center md:text-end">
-            <p>تصميم احترافي يعكس الثقة والمصداقية</p>
+            <p>{t('tagline')}</p>
           </div>
         </div>
       </div>

@@ -1,9 +1,14 @@
 "use client";
+
 import Image from "next/image";
 import { Button } from "../ui/Button";
 import { PhoneCall } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const Hero = () => {
+  const t = useTranslations("hero");
+  const tNav = useTranslations("nav");
+
   return (
     <section
       id="home"
@@ -15,14 +20,13 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="max-w-2xl">
             <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-6">
-              محامٍ في المدية
+              {t('subtitle')}
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading text-primary leading-tight mb-6">
-              Avocat Ayoub <br className="hidden sm:block" /> Ouldrouis
+              {t('title1')} <br className="hidden sm:block" /> {t('title2')}
             </h1>
             <p className="text-lg text-text/80 mb-8 max-w-lg leading-relaxed">
-              دفاع قانوني احترافي في القضايا الجنائية والمدنية مع التزام كامل
-              بحماية حقوقك.
+              {t('description')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -34,7 +38,7 @@ export const Hero = () => {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                احجز استشارة
+                {t('cta_book')}
               </Button>
               <Button
                 size="lg"
@@ -43,7 +47,7 @@ export const Hero = () => {
                 onClick={() => (window.location.href = "tel:0553265760")}
               >
                 <PhoneCall size={20} />
-                <span dir="ltr">اتصال مباشر</span>
+                <span dir="ltr">{t('cta_call')}</span>
               </Button>
             </div>
           </div>

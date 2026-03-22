@@ -1,25 +1,29 @@
+"use client";
+
 import { Gavel, Scale, FileText, Briefcase } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const Services = () => {
+  const t = useTranslations('services');
   const items = [
     {
-      title: "القانون الجنائي",
-      description: "الدفاع في القضايا الجنائية بجميع مراحلها",
+      title: t('criminal.title'),
+      description: t('criminal.desc'),
       icon: <Gavel className="w-8 h-8" />
     },
     {
-      title: "القضايا المدنية",
-      description: "حل النزاعات وتمثيل العملاء أمام القضاء",
+      title: t('civil.title'),
+      description: t('civil.desc'),
       icon: <Scale className="w-8 h-8" />
     },
     {
-      title: "الاستشارات القانونية",
-      description: "تقديم استشارات قانونية دقيقة",
+      title: t('consultation.title'),
+      description: t('consultation.desc'),
       icon: <FileText className="w-8 h-8" />
     },
     {
-      title: "القضايا المستعجلة",
-      description: "التعامل مع الحالات الطارئة بسرعة",
+      title: t('urgent.title'),
+      description: t('urgent.desc'),
       icon: <Briefcase className="w-8 h-8" />
     }
   ];
@@ -28,7 +32,7 @@ export const Services = () => {
     <section id="services" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">مجالات العمل</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
         </div>
         

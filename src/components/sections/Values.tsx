@@ -1,17 +1,21 @@
+"use client";
+
 import { Scale, Users, Clock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const Values = () => {
+  const t = useTranslations('values');
   const items = [
     {
-      title: "الاحترافية",
+      title: t('professionalism'),
       icon: <Scale className="w-12 h-12" />
     },
     {
-      title: "الإنسانية",
+      title: t('humanity'),
       icon: <Users className="w-12 h-12" />
     },
     {
-      title: "السرعة",
+      title: t('speed'),
       icon: <Clock className="w-12 h-12" />
     }
   ];
@@ -20,7 +24,7 @@ export const Values = () => {
     <section className="py-24 bg-primary text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">قيمنا</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">{t('title')}</h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
         </div>
         
