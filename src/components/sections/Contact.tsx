@@ -1,13 +1,51 @@
 "use client";
 
-import { MapPin, Phone, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
+import { sendEmail } from '@/app/actions/sendEmail';
 
 export const Contact = () => {
   const t = useTranslations('contact');
   const locale = useLocale();
   const isRtl = locale === 'ar';
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const result = await sendEmail(formData);
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setErrorMessage(result.error || 'Something went wrong');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('An unexpected error occurred');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
     <section id="contact" className="py-24 bg-[#F8F9FB]">
@@ -65,68 +103,117 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form - Card on the other side */}
           <div className={`bg-white p-8 lg:p-12 rounded-[2rem] shadow-xl shadow-gray-200/50 border border-gray-100 ${isRtl ? 'lg:order-2' : ''}`}>
-            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-10">
+            {status === 'success' ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center space-y-4">
+                <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-4">
+                  <CheckCircle2 size={48} />
+                </div>
+                <h3 className="text-2xl font-bold text-primary">Message Sent!</h3>
+                <p className="text-gray-600 max-w-sm">
+                  Thank you for reaching out. We'll get back to you as soon as possible.
+                </p>
+                <Button 
+                  onClick={() => setStatus('idle')}
+                  className="mt-6 bg-primary text-white px-8 py-3 rounded-none"
+                >
+                  Send Another Message
+                </Button>
+              </div>
+            ) : (
+              <form className="space-y-10" onSubmit={handleSubmit}>
+                <div className="grid md:grid-cols-2 gap-10">
+                  <div className="relative group">
+                    <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                      {t('form.name')}
+                    </label>
+                    <input 
+                      type="text" 
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="relative group">
+                    <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
+                      {t('form.email')}
+                    </label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+
                 <div className="relative group">
                   <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
-                    {t('form.name')}
+                    {t('form.subject')}
                   </label>
                   <input 
                     type="text" 
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
                     placeholder=""
                   />
                 </div>
+
                 <div className="relative group">
                   <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
-                    {t('form.email')}
+                    {t('form.message')}
                   </label>
-                  <input 
-                    type="email" 
-                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
+                  <textarea 
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium resize-none"
                     placeholder=""
-                  />
+                  ></textarea>
                 </div>
-              </div>
 
-              <div className="relative group">
-                <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
-                  {t('form.subject')}
-                </label>
-                <input 
-                  type="text" 
-                  className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium"
-                  placeholder=""
-                />
-              </div>
-
-              <div className="relative group">
-                <label className="text-sm font-bold text-gray-400 mb-2 block transition-colors group-focus-within:text-secondary">
-                  {t('form.message')}
-                </label>
-                <textarea 
-                  rows={4}
-                  className="w-full bg-transparent border-b-2 border-gray-100 py-3 outline-none transition-all focus:border-secondary text-primary font-medium resize-none"
-                  placeholder=""
-                ></textarea>
-              </div>
-
-              <Button type="submit" className="w-full py-5 rounded-none bg-[#0B1C2C] text-white hover:bg-[#1a2e42] transition-all flex items-center justify-center gap-3 text-lg font-bold group">
-                {isRtl ? (
-                  <>
-                    <span className="mt-1">{t('form.submit')}</span>
-                    <Send className="w-5 h-5 transition-transform group-hover:-translate-x-1 -rotate-90" />
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    <span className="mt-1">{t('form.submit')}</span>
-                  </>
+                {status === 'error' && (
+                  <div className="p-4 bg-red-50 border border-red-100 text-red-600 rounded-lg flex items-center gap-3 text-sm">
+                    <AlertCircle size={20} />
+                    <p>{errorMessage}</p>
+                  </div>
                 )}
-              </Button>
-            </form>
+
+                <Button 
+                  type="submit" 
+                  disabled={status === 'loading'}
+                  className="w-full py-5 rounded-none bg-[#0B1C2C] text-white hover:bg-[#1a2e42] transition-all flex items-center justify-center gap-3 text-lg font-bold group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </div>
+                  ) : isRtl ? (
+                    <>
+                      <span className="mt-1">{t('form.submit')}</span>
+                      <Send className="w-5 h-5 transition-transform group-hover:-translate-x-1 -rotate-90" />
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                      <span className="mt-1">{t('form.submit')}</span>
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </div>
 
         </div>
