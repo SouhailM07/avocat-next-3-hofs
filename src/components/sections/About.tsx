@@ -20,8 +20,8 @@ export const About = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-secondary/10 rounded-3xl -z-10 lg:translate-y-4 lg:-translate-x-4" />
             <img
-              src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80&w=1200"
-              alt="Metallic Lady Justice Statue"
+              src="/office-shelves.jpg"
+              alt="Lawyer's Office Shelves"
               className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
             />
           </div>

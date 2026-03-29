@@ -1,30 +1,50 @@
 "use client";
 
-import { Gavel, Scale, FileText, Briefcase } from 'lucide-react';
+import { Gavel, Scale, FileText, Briefcase, Users, Home, Globe, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export const Services = () => {
   const t = useTranslations('services');
   const items = [
     {
-      title: t('criminal.title'),
-      description: t('criminal.desc'),
+      title: t('item1.title'),
+      description: t('item1.desc'),
       icon: <Gavel className="w-8 h-8" />
     },
     {
-      title: t('civil.title'),
-      description: t('civil.desc'),
-      icon: <Scale className="w-8 h-8" />
+      title: t('item2.title'),
+      description: t('item2.desc'),
+      icon: <Globe className="w-8 h-8" />
     },
     {
-      title: t('consultation.title'),
-      description: t('consultation.desc'),
+      title: t('item3.title'),
+      description: t('item3.desc'),
       icon: <FileText className="w-8 h-8" />
     },
     {
-      title: t('urgent.title'),
-      description: t('urgent.desc'),
+      title: t('item4.title'),
+      description: t('item4.desc'),
       icon: <Briefcase className="w-8 h-8" />
+    },
+    {
+      title: t('item5.title'),
+      description: t('item5.desc'),
+      icon: <Users className="w-8 h-8" />
+    },
+    {
+      title: t('item6.title'),
+      description: t('item6.desc'),
+      icon: <Scale className="w-8 h-8" />
+    },
+    {
+      title: t('item7.title'),
+      description: t('item7.desc'),
+      icon: <Home className="w-8 h-8" />
+    },
+    {
+      title: t('item8.title'),
+      description: t('item8.desc'),
+      icon: <Zap className="w-8 h-8" />
     }
   ];
 

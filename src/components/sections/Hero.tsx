@@ -57,7 +57,7 @@ export const Hero = () => {
             <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-primary relative">
               <div className="absolute inset-0 bg-black/30 z-10" />
               <Image
-                src="/hero.webp"
+                src="/office-desk.jpg"
                 fill
                 priority
                 fetchPriority="high"

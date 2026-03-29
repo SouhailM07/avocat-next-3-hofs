@@ -15,32 +15,48 @@
     "cta_call": "Appel direct"
   },
   "about": {
-    "title": "À Propos du Cabinet",
-    "description": "Le cabinet offre des services juridiques complets avec une expertise dans la défense des affaires pénales et civiles, avec un engagement de confidentialité et de professionnalisme.",
+    "title": "À propos du Cabinet",
+    "description": "Maître Ouldrouis Ayoub, avocat agréé près le Conseil, propose des services juridiques spécialisés avec une vision moderne qui allie rigueur juridique et flexibilité pratique. Le travail du cabinet repose sur l'accompagnement des particuliers, des institutions et des entreprises dans divers domaines juridiques, en fournissant des conseils précis et des solutions efficaces basées sur une analyse approfondie de chaque dossier, garantissant ainsi la protection des intérêts des clients et l'obtention des meilleurs résultats. Le cabinet se distingue par l'adoption d'une approche moderne dans la prestation de services juridiques, basée sur la rapidité de réponse, la transparence dans les transactions et l'engagement total envers l'éthique professionnelle. L'objectif est d'être un partenaire juridique fiable, apportant confiance, soutien et solutions qui font la différence.",
     "features": {
-      "expertise": "Expertise Juridique",
-      "confidentiality": "Confidentialité Totale",
-      "speed": "Réponse Rapide",
-      "followup": "Suivi Précis"
+      "expertise": "Expertise juridique",
+      "confidentiality": "Confidentialité totale",
+      "speed": "Réponse rapide",
+      "followup": "Suivi rigoureux"
     }
   },
   "services": {
-    "title": "Domaines d'Intervention",
-    "criminal": {
-      "title": "Droit Pénal",
-      "desc": "Défense dans les affaires pénales à toutes les étapes."
+    "title": "Domaines d'intervention",
+    "item1": {
+      "title": "Tous les tribunaux et conseils",
+      "desc": "Représentation sur tout le territoire algérien"
     },
-    "civil": {
-      "title": "Affaires Civiles",
-      "desc": "Résolution de litiges et représentation des clients devant les tribunaux."
+    "item2": {
+      "title": "Régularisation Espagne/Italie",
+      "desc": "Dossiers d'immigration et séjour en Europe"
     },
-    "consultation": {
-      "title": "Conseil Juridique",
-      "desc": "Prestation de conseils juridiques précis."
+    "item3": {
+      "title": "Résidence Espagne d'Algérie",
+      "desc": "Accompagnement légal pour les demandes de séjour"
     },
-    "urgent": {
-      "title": "Affaires Urgentes",
-      "desc": "Traitement rapide des cas d'urgence."
+    "item4": {
+      "title": "Affaires Commerciales",
+      "desc": "Droit des sociétés et litiges commerciaux"
+    },
+    "item5": {
+      "title": "Affaires Sociales",
+      "desc": "Droit du travail et conflits sociaux"
+    },
+    "item6": {
+      "title": "Famille et Mariage Mixte",
+      "desc": "Statut personnel et contrats internationaux"
+    },
+    "item7": {
+      "title": "Affaires Immobilières",
+      "desc": "Protection de propriété et litiges fonciers"
+    },
+    "item8": {
+      "title": "Garde à vue / Comparution",
+      "desc": "Urgences juridiques et défense immédiate"
     }
   },
   "authority": {
