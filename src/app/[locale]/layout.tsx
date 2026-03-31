@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,9 +18,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "محامي في المدية | Avocat Ayoub Ouldrouis",
-  description: "محامي في المدية متخصص في القضايا الجنائية والمدنية. استشارة قانونية احترافية واتصال مباشر.",
-  keywords: ["محامي المدية", "Avocat Medea", "قانون جنائي", "استشارة قانونية"],
+  title: "محامي في الشراقة | Maître Ayoub Ouldrouis",
+  description: "محامي في الشراقة متخصص في القضايا الجنائية والمدنية. استشارة قانونية احترافية واتصال مباشر.",
+  keywords: ["محامي الشراقة", "Maître Cheraga", "قانون جنائي", "استشارة قانونية"],
 };
 
 export default async function RootLayout({
@@ -51,6 +52,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col font-sans bg-background text-text">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
     </html>

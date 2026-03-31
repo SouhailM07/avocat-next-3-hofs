@@ -7,8 +7,8 @@
     "book": "Réserver"
   },
   "hero": {
-    "subtitle": "Avocat à Médéa",
-    "title1": "Avocat Ayoub",
+    "subtitle": "Maître à Chéraga",
+    "title1": "Maître Ayoub",
     "title2": "Ouldrouis",
     "description": "Défense juridique professionnelle dans les affaires pénales et civiles avec un engagement total pour protéger vos droits.",
     "cta_book": "Réserver une consultation",
@@ -16,7 +16,7 @@
   },
   "about": {
     "title": "À propos du Cabinet",
-    "description": "Maître Ouldrouis Ayoub, avocat agréé près le Conseil, propose des services juridiques spécialisés avec une vision moderne qui allie rigueur juridique et flexibilité pratique. Le travail du cabinet repose sur l'accompagnement des particuliers, des institutions et des entreprises dans divers domaines juridiques, en fournissant des conseils précis et des solutions efficaces basées sur une analyse approfondie de chaque dossier, garantissant ainsi la protection des intérêts des clients et l'obtention des meilleurs résultats. Le cabinet se distingue par l'adoption d'une approche moderne dans la prestation de services juridiques, basée sur la rapidité de réponse, la transparence dans les transactions et l'engagement total envers l'éthique professionnelle. L'objectif est d'être un partenaire juridique fiable, apportant confiance, soutien et solutions qui font la différence.",
+    "description": "Maître Ouldrouis Ayoub, maître agréé près le Conseil, propose des services juridiques spécialisés avec une vision moderne qui allie rigueur juridique et flexibilité pratique. Le travail du cabinet repose sur l'accompagnement des particuliers, des institutions et des entreprises dans divers domaines juridiques, en fournissant des conseils précis et des solutions efficaces basées sur une analyse approfondie de chaque dossier, garantissant ainsi la protection des intérêts des clients et l'obtention des meilleurs résultats. Le cabinet se distingue par l'adoption d'une approche moderne dans la prestation de services juridiques, basée sur la rapidité de réponse, la transparence dans les transactions et l'engagement total envers l'éthique professionnelle. L'objectif est d'être un partenaire juridique fiable, apportant confiance, soutien et solutions qui font la différence.",
     "features": {
       "expertise": "Expertise juridique",
       "confidentiality": "Confidentialité totale",
@@ -94,7 +94,7 @@
     "description": "Nous sommes là pour répondre à toutes vos questions juridiques. N'hésitez pas à nous contacter pour prendre rendez-vous ou pour obtenir une consultation.",
     "office_name": "Cabinet Maître Ayoub Ouldrouis",
     "address_label": "Localisation",
-    "address_value": "7Q87+VJ7, Rue Kassab Ahmed, Médéa",
+    "address_value": "7Q87+VJ7, Rue Kassab Ahmed, Chéraga",
     "hours_label": "Horaires",
     "hours_value": "Dimanche - Jeudi : 09h00 - 17h00",
     "phone_label": "Téléphone",
