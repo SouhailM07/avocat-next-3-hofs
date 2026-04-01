@@ -19,9 +19,11 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="max-w-2xl">
-            <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-6">
-              {t('subtitle')}
-            </span>
+            {t('subtitle') && (
+              <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-6">
+                {t('subtitle')}
+              </span>
+            )}
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading text-primary leading-tight mb-6">
               {t('title1')} <br className="hidden sm:block" /> {t('title2')}
             </h1>
