@@ -15,10 +15,10 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   const links = [
-    { name: t('home'), href: '#home' },
-    { name: t('about'), href: '#about' },
-    { name: t('services'), href: '#services' },
-    { name: t('contact'), href: '#contact' },
+    { name: t('home'), href: '/#home' },
+    { name: t('about'), href: '/#about' },
+    { name: t('services'), href: '/#services' },
+    { name: t('contact'), href: '/#contact' },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);

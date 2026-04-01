@@ -17,11 +17,56 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "محامي في الشراقة | Maître Ayoub Ouldrouis",
-  description: "محامي في الشراقة متخصص في القضايا الجنائية والمدنية. استشارة قانونية احترافية واتصال مباشر.",
-  keywords: ["محامي الشراقة", "Maître Cheraga", "قانون جنائي", "استشارة قانونية"],
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const baseUrl = "https://www.ayoub-ouldrouis-avocat.com";
+  
+  const translations = {
+    fr: {
+      title: "Avocat à Chéraga - Ayoub Ouldrouis",
+      description: "Cabinet d'avocat à Chéraga en Algérie. Services juridiques professionnels.",
+    },
+    ar: {
+      title: "محامي في الشراقة - أيوب أولدرويس",
+      description: "محامي في الشراقة، الجزائر. خدمات قانونية احترافية.",
+    },
+  };
+
+  const current = translations[locale as keyof typeof translations] || translations.fr;
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title: {
+      default: current.title,
+      template: `%s | ${current.title}`,
+    },
+    description: current.description,
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        fr: `${baseUrl}/fr`,
+        ar: `${baseUrl}/ar`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title: current.title,
+      description: current.description,
+      url: `${baseUrl}/${locale}`,
+      siteName: "Maître Ayoub Ouldrouis",
+      locale: locale === "ar" ? "ar_DZ" : "fr_FR",
+      type: "website",
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
