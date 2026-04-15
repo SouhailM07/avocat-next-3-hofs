@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "../globals.css";
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,11 +26,12 @@ export async function generateMetadata({
   const { locale } = await params;
 
   const baseUrl = "https://www.ayoub-ouldrouis-avocat.com";
-  
+
   const translations = {
     fr: {
       title: "Avocat à Chéraga - Ayoub Ouldrouis",
-      description: "Cabinet d'avocat à Chéraga en Algérie. Services juridiques professionnels.",
+      description:
+        "Cabinet d'avocat à Chéraga en Algérie. Services juridiques professionnels.",
     },
     ar: {
       title: "محامي في الشراقة - أيوب أولدرويس",
@@ -37,7 +39,8 @@ export async function generateMetadata({
     },
   };
 
-  const current = translations[locale as keyof typeof translations] || translations.fr;
+  const current =
+    translations[locale as keyof typeof translations] || translations.fr;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -70,23 +73,23 @@ export async function generateMetadata({
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 }) {
-  const {locale} = await params;
+  const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
- 
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
 
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
     <html
@@ -95,6 +98,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-background text-text">
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <NextIntlClientProvider messages={messages}>
           {children}
           <WhatsAppButton />
